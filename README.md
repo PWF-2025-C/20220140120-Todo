@@ -26,3 +26,19 @@ Browser dashboard User
 
 Database dengan 2 user
 ![Cuplikan layar 2025-03-08 150817](https://github.com/user-attachments/assets/acfbe025-bb6a-405f-9ca3-5f651d1075c0)
+
+--PRAKTIKUM 3--
+
+Terminal – command yang sudah dieksekusi
+![Cuplikan layar 2025-03-19 191717](https://github.com/user-attachments/assets/82926237-f931-43bc-8a7f-fb3f6e58942a)
+![Cuplikan layar 2025-03-19 191917](https://github.com/user-attachments/assets/8c5cd271-a17b-4c3b-aef0-d20104f41f03)
+
+
+Browser desktop & mobile view Todo
+![Cuplikan layar 2025-03-19 191513](https://github.com/user-attachments/assets/893fd023-029e-4229-8204-a3ce05c25903)
+<img width="396" alt="image" src="https://github.com/user-attachments/assets/0efb1293-e14f-441b-b096-000c59773db5" />
+
+
+Browser desktop & mobile view User
+![Cuplikan layar 2025-03-19 191521](https://github.com/user-attachments/assets/0ba09aad-3fa0-4194-897e-661b04484215)
+<img width="371" alt="image" src="https://github.com/user-attachments/assets/2ab05439-d6e1-4f84-9b34-49f799a7ffef" />
