@@ -42,3 +42,23 @@ Browser desktop & mobile view Todo
 Browser desktop & mobile view User
 ![Cuplikan layar 2025-03-19 191521](https://github.com/user-attachments/assets/0ba09aad-3fa0-4194-897e-661b04484215)
 <img width="371" alt="image" src="https://github.com/user-attachments/assets/2ab05439-d6e1-4f84-9b34-49f799a7ffef" />
+
+--PRAKTIKUM 4--
+Terminal – command yang sudah dieksekusi
+![Cuplikan layar 2025-03-27 184044](https://github.com/user-attachments/assets/5782e897-e662-416a-8f3f-3b4d0c67bd59)
+![Cuplikan layar 2025-03-27 185026](https://github.com/user-attachments/assets/18e894cc-b5ca-4f18-b355-9b6a26c20937)
+![Cuplikan layar 2025-03-27 184227](https://github.com/user-attachments/assets/35aa4b01-a529-4d35-8470-61db45c57f7d)
+![Cuplikan layar 2025-03-27 181322](https://github.com/user-attachments/assets/5f654a6a-32b9-4e05-81b8-5f289dbd520c)
+
+
+DBMS – tabel user dan terdapat 101 
+![Cuplikan layar 2025-03-27 185645](https://github.com/user-attachments/assets/8162510b-db66-461f-b415-9dc1e51605e7)
+
+
+DBMS – tabel todo dan data minimal 500 
+![Cuplikan layar 2025-03-27 185856](https://github.com/user-attachments/assets/15a8b3a9-41d7-4451-8689-946fe4990391)
+
+Browser - http://nim-todo.test/todo tampilkan todos collection
+![Cuplikan layar 2025-03-27 183352](https://github.com/user-attachments/assets/567a2da1-78c1-4d67-9ce0-923495cc85e0)
+
+
