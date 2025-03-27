@@ -44,6 +44,7 @@ Browser desktop & mobile view User
 <img width="371" alt="image" src="https://github.com/user-attachments/assets/2ab05439-d6e1-4f84-9b34-49f799a7ffef" />
 
 --PRAKTIKUM 4--
+
 Terminal – command yang sudah dieksekusi
 ![Cuplikan layar 2025-03-27 184044](https://github.com/user-attachments/assets/5782e897-e662-416a-8f3f-3b4d0c67bd59)
 ![Cuplikan layar 2025-03-27 185026](https://github.com/user-attachments/assets/18e894cc-b5ca-4f18-b355-9b6a26c20937)
