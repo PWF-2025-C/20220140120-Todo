@@ -7,10 +7,10 @@
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between px-6 py-4">
+            <div class="flex justify-between items-center mb-6">
                 <x-create-button href="{{ route('todo.create') }}" />
                 @if (session('success'))
-                    <div class="px-4 py-2 bg-green-100 text-green-800 text-sm rounded-lg dark:bg-green-900 dark:text-green-300">
+                    <div class="text-green-600 dark:text-green-400 text-sm font-semibold px-4 py-2">
                         {{ session('success') }}
                     </div>
                 @endif
@@ -37,14 +37,41 @@
                                     </td>
                                     <td class="px-6 py-4">
                                         @if (!$data->is_done)
-                                        <span class="text-red-600">Ongoing</span>
+                                            <span class="text-red-600">Ongoing</span>
                                         @else
-                                        <span class="text-green-600">Completed</span>
+                                            <span class="text-green-600">Completed</span>
                                         @endif
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a href="{{ route('todo.edit', $data) }}"
-                                           class="text-blue-600 hover:underline text-sm">Edit</a>
+                                        <div class="flex gap-4">
+                                            {{-- Complete / Uncomplete --}}
+                                            @if (!$data->is_done)
+                                                <form action="{{ route('todo.complete', $data) }}" method="POST">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <button type="submit" class="text-green-600 dark:text-green-400 hover:underline">
+                                                        Complete
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <form action="{{ route('todo.uncomplete', $data) }}" method="POST">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <button type="submit" class="text-blue-600 dark:text-green-400 hover:underline">
+                                                        Uncomplete
+                                                    </button>
+                                                </form>
+                                            @endif
+
+                                            {{-- Delete --}}
+                                            <form action="{{ route('todo.destroy', $data) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-600 dark:text-red-400 hover:underline">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @empty
@@ -58,6 +85,19 @@
                     </table>
                 </div>
             </div>
+
+            {{-- Delete semua Completed Task --}}
+            @if ($todosCompleted > 1)
+                <div class="flex justify-left pt-6">
+                    <form action="{{ route('todo.deleteallcompleted') }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <x-primary-button>
+                            Delete All Completed Task
+                        </x-primary-button>
+                    </form>
+                </div>
+            @endif
         </div>
     </div>
 </x-app-layout>
