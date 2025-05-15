@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Todo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class TodoController extends Controller
 {
@@ -21,21 +22,17 @@ class TodoController extends Controller
 
     public function create()
     {
-        return view('todo.create');
+        $categories = Category::all(); 
+        return view('todo.create', compact('categories'));
     }
 
     //Edit Data – Todo
-    public function edit(Todo $todo)
+    public function edit($id)
     {
-        if (auth()->user()->id == $todo->user_id) {
-            // dd($todo);
-            return view('todo.edit', compact('todo'));
-        } else {
-            // abort(403);
-            // abort(403, 'Not authorized');
-            return redirect()->route('todo.index')->with('danger', 'You are not authorized to edit this todo!');
-        }
-
+        $todo = Todo::findOrFail($id);
+        $categories = Category::all();
+        
+        return view('todo.edit', compact('todo', 'categories'));
     }
 
     public function update(Request $request, Todo $todo)
@@ -51,7 +48,8 @@ class TodoController extends Controller
         // Eloquent Way - Readable
         $todo->update([
             'title' => ucfirst($request->title),
-        ]);
+            'category_id' => $request->category_id,
+        ]);        
 
         return redirect()->route('todo.index')->with('success', 'Todo updated successfully!');
     }
@@ -109,15 +107,24 @@ class TodoController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|string|max:255',
-        ]);
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'category_id' => 'required|exists:categories,id'
+    ]);
+    
+    $todo = new Todo();
+    $todo->title = ucfirst($request->title);
+    $todo->is_done = false;
+    $todo->user_id = Auth::user()->id;
+    $todo->category_id = $request->category_id;
+    $todo->save();
 
-        $todo = Todo::create([
-            'title' => ucfirst($request->title),
-            'user_id' => Auth::id(),
-            'is_done' => false,
-        ]);
-        return redirect()->route('todo.index')->with('success', 'Todo Created Successfully');
-    }
+    return redirect()->route('todo.index')->with('success', 'Todo Created Successfully');
+}
+
+    public function show(string $id)
+    {
+        $todo = Todo::with('category')->findOrFail($id);
+        return view('todo.show', compact('todo'));
+    }    
 }

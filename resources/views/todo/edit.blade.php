@@ -22,6 +22,22 @@
                         <x-input-error class="mt-2" :messages="$errors->get('title')" />
                     </div>
 
+                    <div class="mb-6">
+                        <label class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
+                            Category
+                        </label>
+                        <select 
+                            name="category_id" 
+                            class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                            required
+                        >
+                            <option value="" disabled selected>Choose Category</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="flex items-center gap-4">
                         <x-primary-button>{{ __('Save') }}</x-primary-button>
                         <x-cancel-button href="{{ route('todo.index') }}" />
