@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KategoriController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,12 +39,25 @@ Route::middleware('auth')->group(function () {
     //Delete Data – User
     Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
 
-    // //Update Data – Make Admin dan Remove Admin
+    // Update Data – Make Admin dan Remove Admin
     // Route::patch('user/{user}/makeadmin', [UserController::class, 'makeadmin']) ->name('user.makeadmin');
     // Route::patch('user/{user}/removeadmin', [UserController::class, 'removeadmin']) ->name('user.removeadmin');
 
     Route::get('/user',[UserController::class, 'index'])-> name('user.index');
     Route::post('/todo', [TodoController::class, 'store'])->name('todo.store');
+
+
+    // KATEGORI
+    Route::get('/category', [KategoriController::class, 'index']) ->name('categories.index');
+    Route::get('/category/create', [KategoriController::class, 'create'])->name('categories.create');
+    Route::post('/category/store', [KategoriController::class, 'store'])->name('categories.store');
+    Route::get('/category/{category}/edit', [KategoriController::class, 'edit'])->name('categories.edit');
+    Route::put('/category/{category}', [KategoriController::class, 'update'])->name('categories.update');
+    Route::delete('category/{category}', [KategoriController::class, 'destroy']) ->name('categories.destroy');
+    Route::patch('/category/{category}', [KategoriController::class, 'update']);
+
+    
+
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {

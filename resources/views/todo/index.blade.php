@@ -22,6 +22,7 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">Title</th>
+                                <th scope="col" class="px-6 py-3">Category</th>
                                 <th scope="col" class="px-6 py-3">Status</th>
                                 <th scope="col" class="px-6 py-3">Action</th>
                             </tr>
@@ -35,6 +36,9 @@
                                             {{ $data->title }}
                                         </a>
                                     </td>
+                                    <td class="px-6 py-4">
+                                        {{ $data->category->title ?? '-' }}
+                                    </td>
                                     <td class="px-6 py-4">
                                         @if (!$data->is_done)
                                             <span class="text-red-600">Ongoing</span>
