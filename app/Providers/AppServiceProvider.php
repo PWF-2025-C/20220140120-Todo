@@ -5,6 +5,11 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Pagination\Paginator;
+use Laravel\Sanctum\PersonalAccessToken;
+use Laravel\Sanctum\Sanctum;
+use Illuminate\Support\Str;
+use Illuminate\Routing\Route;
+use Dedoc\Scramble\Scramble;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,8 +27,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useTailwind();
+
         Gate::define('admin', function ($user) {
             return $user->is_admin == true;
         });
+
+        Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
+
+        Scramble::configure()->routes(function (Route $route) {
+             return Str::startsWith($route->uri(), 'api/');
+         });
     }
 }
