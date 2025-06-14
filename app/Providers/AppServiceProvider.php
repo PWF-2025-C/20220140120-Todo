@@ -10,6 +10,8 @@ use Laravel\Sanctum\Sanctum;
 use Illuminate\Support\Str;
 use Illuminate\Routing\Route;
 use Dedoc\Scramble\Scramble;
+use Dedoc\Scramble\Support\Generator\OpenApi;
+use Dedoc\Scramble\Support\Generator\SecurityScheme;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,7 +37,11 @@ class AppServiceProvider extends ServiceProvider
         Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
 
         Scramble::configure()->routes(function (Route $route) {
-             return Str::startsWith($route->uri(), 'api/');
-         });
+            return Str::startsWith($route->uri, 'api/');
+        })->withDocumentTransformers(function (OpenApi $openApi){
+            $openApi->secure(
+                SecurityScheme::http('bearer')
+            );
+        });
     }
 }
